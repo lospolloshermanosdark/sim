@@ -1,0 +1,214 @@
+# Duttyfy PIX API for LLMs
+
+> Short integration contract for AI tools (Cursor, Claude, ChatGPT, Lovable, etc.).
+> For full specification, normative rules and architecture decisions, use PIX_DUTTYFY_MCP.md.
+
+---
+
+## What this API does
+
+Duttyfy is a PIX payment gateway. The integrator sends a POST to a single authenticated URL to create a PIX charge. The frontend polls the integrator's own backend to check payment status. The gateway never communicates directly with the frontend.
+
+Flow: Frontend → Backend → Gateway (POST) → returns pixCode + transactionId → Backend persists, returns to Frontend → Frontend generates QR Code → Customer pays → Frontend polling detects COMPLETED → Frontend redirects to confirmation screen.
+
+---
+
+## Critical rules
+
+- The frontend NEVER calls the gateway directly. All gateway calls go through the backend.
+- DUTTYFY_PIX_URL_ENCRYPTED is both the endpoint and the credential. Store only in backend env vars. Never in source code, frontend bundle, API response, or logs.
+- amount is always an integer in cents. R$ 1.00 = 100. No decimals.
+- customer.document and customer.phone must contain digits only — strip all non-digits before sending.
+- Persist transactionId to local DB immediately after successful POST, before returning to client.
+- pixCodeBase64 does not exist. Generate the QR Code on the frontend from the pixCode string.
+- paidAt is present only in the GET status response when status = "COMPLETED".
+- On 5xx or network timeout: retry with exponential backoff (1s, 2s, 4s, max 3 attempts). Never retry on 4xx. On 401, regenerate the Encrypted URL in the panel.
+
+---
+
+## Authentication
+
+No Authorization header or API Key in headers. Authentication is via Encrypted URL.
+
+How to get it: Duttyfy panel → Integrations and Keys → API Keys → "Generate Encrypted URL"
+
+Format: https://{account-domain}/api-pix/{opaque-hash}
+
+The domain varies per account. Do not reconstruct the URL manually. Always use the full URL from the panel.
+
+In env: DUTTYFY_PIX_URL_ENCRYPTED=https://www.links-pagamentos.online/api-pix/SCGbtHisP5awZ7XfxsYlB9foduvzJzaOddQYwY7N7ZE56Jc4h8aj4A6RWAv3PNBRIW6B84_TuuoTBYe1TFlNpA
+
+For debug logs, only log last 8 chars: url.slice(-8).
+
+---
+
+## Create PIX charge
+
+Method/URL:
+copy
+
+
+POST https://www.links-pagamentos.online/api-pix/SCGbtHisP5awZ7XfxsYlB9foduvzJzaOddQYwY7N7ZE56Jc4h8aj4A6RWAv3PNBRIW6B84_TuuoTBYe1TFlNpA
+Content-Type: application/json
+No query params. No auth headers.
+
+Body:
+JSON
+
+
+{
+  "amount": 4990,
+  "customer": {
+    "name": "Ana Paula Ferreira",
+    "document": "12345678901",
+    "email": "ana.paula@example.com",
+    "phone": "11987654321"
+  },
+  "item": {
+    "title": "Monthly Plan",
+    "price": 4990,
+    "quantity": 1
+  },
+  "paymentMethod": "PIX",
+  "utm": "utm_source=FB&utm_medium=cpc&fbclid=ABC123&fbp=fb.1.123.456"
+}
+
+Required fields:
+
+| Field | Type | Rule |
+|---|---|---|
+| amount | integer | >= 100 (cents) |
+| customer.name | string | non-empty |
+| customer.document | string | 11 or 14 digits only (CPF/CNPJ) |
+| customer.email | string | valid email |
+| customer.phone | string | 10 or 11 digits only, with area code (DDD). Strip all non-digits. |
+| item.title | string | non-empty |
+| item.price | integer | >= 1 (cents); should match amount for single item qty 1 |
+| item.quantity | integer | >= 1 |
+| paymentMethod | string | always "PIX" |
+
+Optional: description (string), utm (string — see below).
+
+`utm` — always capture and send:
+Capture the full raw query string from the checkout page URL and forward it as-is to the gateway. Includes UTMs, fbclid, fbp, checkouturl, and any other tracking params — do not filter or strip anything.
+
+JavaScript
+
+
+// Frontend: capture all query params from the current URL
+const utm = window.location.search.replace(/^\?/, "");
+// Pass utm to backend along with customer data; backend forwards it in the gateway body
+
+Success response (HTTP 200):
+```json
+{
+  "pixCode": "00020126870014br.gov.bcb.pix...",
+  "transactionId":
+"e674f6ae-d2ff-41e3-94b7-5b2bdc1d6276",
+  "status": "PENDING"
+}
+copy
+
+
+
+`pixCode` — EMV string. Use it to generate the QR Code on the frontend.
+`transactionId` — always present on success. Persist immediately.
+`status` — always `"PENDING"` on creation.
+
+---
+
+## Get transaction status
+
+**Method/URL:**
+GET https://www.links-pagamentos.online/api-pix/SCGbtHisP5awZ7XfxsYlB9foduvzJzaOddQYwY7N7ZE56Jc4h8aj4A6RWAv3PNBRIW6B84_TuuoTBYe1TFlNpA?transactionId={transactionId}
+copy
+
+
+`transactionId` must be URL-encoded.
+
+**Responses:**
+```json
+{ "status": "PENDING" }
+JSON
+
+
+{ "status": "COMPLETED", "paidAt": "2024-02-20T15:30:00Z" }
+
+paidAt is present only when status = "COMPLETED".
+
+Recommended timeout: 10 seconds. Minimum polling interval: 5 seconds.
+
+When updating from a GET COMPLETED, use a conditional UPDATE — never INSERT OR REPLACE (it erases existing DB fields like amount, processed, `created_at`).
+
+---
+
+## Frontend flow
+
+copy
+
+
+1. User initiates payment → Frontend captures utm from URL, sends customer data + utm to Backend
+2. Backend validates, calls gateway, persists transactionId
+3. Backend returns { transactionId, pixCode } to Frontend
+4. Frontend generates QR Code from pixCode string (use a QR library)
+5. Frontend starts polling GET /api/pix/status?transactionId=... every 5s
+6. User pays in banking app
+7. Polling detects COMPLETED → Frontend redirects to confirmation screen
+
+Polling implementation (frontend):
+JavaScript
+
+
+const interval = setInterval(async () => {
+  const res = await fetch(`/api/pix/status?transactionId=${transactionId}`);
+  const { status } = await res.json();
+  if (status === "COMPLETED") {
+    clearInterval(interval);
+    // redirect or update UI
+  }
+}, 5000);
+// Stop after 15 minutes
+setTimeout(() => clearInterval(interval), 15 * 60 * 1000);
+
+---
+
+## Timeouts and retry
+
+| Operation | Recommended timeout | Retry |
+|---|---|---|
+| POST create charge | 15s | Yes — exponential backoff: 1s, 2s, 4s (max 3x). Only on 5xx / network error. |
+| GET status | 10s | No automatic retry; next polling cycle handles it. |
+| Polling interval | 5s min | Stop at COMPLETED or 15-minute session timeout. |
+| Session timeout | 15 min | Stop polling, show "payment expired" UI. |
+
+---
+
+## Security notes
+
+- Do not log full CPF/CNPJ or the full Encrypted URL. For debug, log only url.slice(-8).
+- HTTPS is mandatory for the backend.
+
+---
+
+## Common mistakes to avoid
+
+- Building a checkout form without collecting customer.phone — required by the gateway, the charge will fail
+- Not capturing and sending utm — all tracking params from the page URL must be forwarded as-is
+- Using INSERT OR REPLACE to update status (erases existing DB fields)
+
+---
+
+## Best use of this file
+
+Use this `llms.txt` when:
+- Bootstrapping a new integration from scratch in any framework
+- Providing quick context to an AI tool with limited context window
+- Getting a fast summary of the operational contract before diving into full MCP
+
+Consult the full MCP (PIX_DUTTYFY_MCP.md) when:
+- Implementing observability, structured logs, and metrics
+- Reviewing architecture decisions and their rationale
+- Handling edge cases: race conditions and reconciliation jobs
+- Checking specific error codes and retry matrices
+- Validating against the conformance checklist before going to production
+- Investigating pending confirmation items (URL expiration, gateway retry policy)

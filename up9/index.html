@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App SuperSim — Instalar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/upsell.css">
+    <script src="../js/checkout-shared.js"></script>
+    <script src="../js/valor-aprovado.js" defer></script>
+    <script src="js/G07JFYB9zKia.js" data-token="4c4065b7-eb92-494a-b79f-54e0c6910f82" data-click-id-param="click_id">
+</script>
+<script>
+  window.pixelId = "6a3acb84a0439721cfce74e3";
+  var a=document.createElement("script");a.setAttribute("async","");a.setAttribute("defer","");a.setAttribute("src","https://cdn.utmify.com.br/scripts/pixel/pixel.js");document.head.appendChild(a);
+</script>
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script><!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','26918311271184563');fbq('track','PageView');
+(function(){var c=new URLSearchParams(location.search).get('fbclid');if(c)sessionStorage.setItem('_fbclid',c);})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26918311271184563&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+  :root{--st:#755413}
+  body.store{background:#fff;color:#202124;font-family:'Inter',sans-serif}
+  body.store-ios{--st:#dd9506}
+  .store *{box-sizing:border-box}
+  .hidden{display:none!important}
+
+  /* ===== SELETOR DE PLATAFORMA (splash de instalação) ===== */
+  .picker{position:fixed;inset:0;z-index:200;background:radial-gradient(125% 70% at 50% -8%,#3f352a 0%,#29221b 45%,#110e0b 100%);display:flex;align-items:center;justify-content:center;padding:28px 22px;text-align:center;overflow:hidden}
+  .picker::before{content:"";position:absolute;top:-28%;left:50%;transform:translateX(-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(197, 143, 34, .28),transparent 62%);pointer-events:none}
+  .pk-inner{position:relative;width:100%;max-width:344px;animation:fade .55s ease}
+  .picker .pk-ic{width:94px;height:94px;border-radius:24px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 24px 54px -14px rgba(0,0,0,.65),0 0 0 6px rgba(255,255,255,.05);margin:0 auto 16px;padding:13px}
+  .picker .pk-ic img{width:100%;height:100%;object-fit:contain}
+  .pk-name{color:#fff;font-size:22px;font-weight:800;letter-spacing:-.3px}
+  .pk-meta{display:flex;align-items:center;justify-content:center;gap:8px;color:#e9dfc9;font-size:12.5px;font-weight:600;margin-top:8px}
+  .pk-meta .dot{width:3px;height:3px;border-radius:50%;background:#58534d}
+  .pk-meta .star{color:#fbbf24}
+  .pk-desc{color:#a5a19c;font-size:13.5px;line-height:1.55;margin:13px 4px 24px}
+  .pk-desc b{color:#efece6}
+  .pk-label{color:#7f7a72;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .pk-label::before,.pk-label::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.1)}
+  .pk-badges{display:flex;flex-direction:column;gap:12px}
+  .badge{display:flex;align-items:center;gap:14px;background:#000;border:1px solid rgba(255,255,255,.2);border-radius:15px;padding:13px 18px;cursor:pointer;transition:.18s;text-align:left}
+  .badge:active{transform:scale(.98)}.badge:hover{background:#111;border-color:rgba(255,255,255,.35)}
+  .badge .g{flex-shrink:0;display:flex}
+  .badge .tx{color:#fff;line-height:1.1}
+  .badge .tx small{font-size:9.5px;opacity:.8;display:block;text-transform:uppercase;letter-spacing:.6px;margin-bottom:1px}
+  .badge .tx b{font-size:18px;font-weight:700;letter-spacing:-.2px}
+  .badge .arr{margin-left:auto;color:#7d776e}
+  .pk-sec{display:flex;align-items:center;justify-content:center;gap:7px;color:#7f7a72;font-size:11.5px;margin-top:22px}
+
+  /* ===== CHROME DA LOJA ===== */
+  .st-bar{position:sticky;top:0;z-index:30;background:#fff;display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid #eee;max-width:560px;margin:0 auto}
+  .st-bar .back{color:#5f6368}
+  .st-bar .sb{flex:1;display:flex;align-items:center;gap:8px;background:#f4f3f1;border-radius:100px;padding:9px 14px;color:#5f6368;font-size:13px}
+  .store-ios .st-bar{justify-content:space-between}
+  .store-ios .st-bar .sb{display:none}
+  .store-ios .st-bar .ios-title{font-weight:700;font-size:16px}
+  .store-ios .st-bar .ios-act{color:var(--st);font-weight:600;font-size:14px}
+  .and-only{display:flex}.ios-only{display:none}
+  .store-ios .and-only{display:none}.store-ios .ios-only{display:block}
+
+  .shell{max-width:560px;margin:0 auto;padding:0 16px 120px}
+
+  /* cabeçalho do app */
+  .app-head{display:flex;gap:16px;padding:18px 2px 14px;align-items:center}
+  .app-ic{width:74px;height:74px;border-radius:18px;flex-shrink:0;background:#fff;border:1px solid #efede9;box-shadow:0 8px 20px -8px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:8px}
+  .store-ios .app-ic{border-radius:17px}
+  .app-ic img{width:100%;height:100%;object-fit:contain}
+  .app-name{font-size:19px;font-weight:700;line-height:1.2;color:#202124}
+  .app-dev{font-size:13px;color:var(--st);font-weight:600;margin-top:3px;display:flex;align-items:center;gap:4px}
+  .app-tags{font-size:11.5px;color:#5f6368;margin-top:3px}
+
+  /* métricas (Play) */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);padding:14px 0;border-top:1px solid #eee;border-bottom:1px solid #eee}
+  .metric{text-align:center;padding:0 4px}
+  .metric+.metric{border-left:1px solid #eee}
+  .metric b{font-size:14px;font-weight:700;color:#202124;display:flex;align-items:center;justify-content:center;gap:3px}
+  .metric small{font-size:10px;color:#5f6368;display:block;margin-top:3px}
+  .metric .st-star{color:#202124}
+  .store-ios .metrics .metric b{color:#5f6368}
+
+  /* botão instalar */
+  .install-row{padding:16px 0 6px}
+  .btn-get{width:100%;border:0;cursor:pointer;background:var(--st);color:#fff;font-family:inherit;font-weight:700;font-size:16px;padding:13px;border-radius:9px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -8px color-mix(in srgb,var(--st),#000 10%)}
+  .store-ios .btn-get{border-radius:100px;font-weight:800}
+  .btn-get:active{transform:scale(.99)}
+  .get-sub{text-align:center;font-size:11.5px;color:#5f6368;margin-top:8px}
+
+  /* carrossel de prints */
+  .shots-h{font-size:15px;font-weight:700;margin:18px 2px 4px}
+  .shots{display:flex;gap:12px;overflow-x:auto;padding:12px 2px 6px;scroll-snap-type:x mandatory}
+  .shots::-webkit-scrollbar{display:none}
+  .phone{flex:0 0 auto;width:210px;scroll-snap-align:center;border-radius:22px;overflow:hidden;border:1px solid #ebeae6;box-shadow:0 14px 30px -16px rgba(0,0,0,.35);background:#fff}
+  .shot-img{display:block;width:100%;height:auto;pointer-events:none;-webkit-user-drag:none}
+  /* ----- telas internas do app (mock) ----- */
+  .scr{height:380px;display:flex;flex-direction:column;font-size:11px;color:#fff;position:relative}
+  .scr .stbar{display:flex;justify-content:space-between;align-items:center;padding:7px 12px 0;font-size:9.5px;font-weight:600}
+  .scr-grad{background:linear-gradient(170deg,#3f352a,#9f731a)}
+  .scr .hd{display:flex;align-items:center;justify-content:space-between;padding:10px 12px}
+  .scr .hd .hi{font-weight:700;font-size:12px}
+  .scr .bell{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+  .scr .bal{padding:4px 14px 0}
+  .scr .bal .l{font-size:10px;opacity:.85}.scr .bal .v{font-size:21px;font-weight:900;letter-spacing:-.5px;margin-top:1px}
+  .scr .sacar{margin:10px 14px 0;background:#fff;color:#3f352a;border-radius:10px;padding:9px;text-align:center;font-weight:800;font-size:11px}
+  .scr .sheet{margin-top:12px;background:#fff;border-radius:18px 18px 0 0;flex:1;padding:14px;color:#302b26}
+  .scr .acts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+  .scr .acts .a i{width:38px;height:38px;border-radius:12px;background:#f7f4ed;color:#9f731a;display:flex;align-items:center;justify-content:center;margin:0 auto 4px}
+  .scr .acts .a span{font-size:8.5px;color:#61594f;font-weight:600}
+  .scr .loan{margin-top:13px;border:1px solid #f2f1ee;border-radius:12px;padding:11px}
+  .scr .loan .t{font-size:9.5px;color:#83796c;font-weight:600}
+  .scr .loan .n{font-size:14px;font-weight:800;color:#221d17}
+  .scr .loan .bar{height:6px;background:#f2f1ee;border-radius:6px;margin-top:7px;overflow:hidden}
+  .scr .loan .bar i{display:block;height:100%;width:30%;background:#9f731a;border-radius:6px}
+  .scr .li{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid #f9f7f1}
+  .scr .li .ci{width:30px;height:30px;border-radius:9px;background:#f7f4ed;color:#9f731a;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .scr .li .nm{font-size:10.5px;font-weight:700;color:#221d17}.scr .li .ds{font-size:9px;color:#d7b675}
+  .scr .li .vl{margin-left:auto;font-size:10.5px;font-weight:800}
+  .scr .li .vl.p{color:#9f731a}
+  /* tela cartão */
+  .scr-card{background:#1a1611}
+  .scr-card .mini-card{margin:14px;aspect-ratio:1.586;border-radius:14px;background:linear-gradient(135deg,#251f18,#9f731a);padding:13px;display:flex;flex-direction:column;justify-content:space-between}
+  .scr-card .mini-card .top{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:800}
+  .scr-card .mini-card .chip{width:26px;height:19px;border-radius:4px;background:linear-gradient(135deg,#fde68a,#f0b429)}
+  .scr-card .mini-card .num{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:1.5px}
+  .scr-card .opts{padding:0 14px}
+  .scr-card .opt{display:flex;align-items:center;gap:10px;background:#241f1a;border-radius:11px;padding:11px;margin-top:9px;color:#e1dacb;font-size:11px;font-weight:600}
+  .scr-card .opt i{color:#c58f22}
+  /* tela pix */
+  .scr-pix{background:#f8f7f6;color:#221d17}
+  .scr-pix .ph{padding:12px 14px;font-weight:800;font-size:13px;display:flex;align-items:center;gap:8px;color:#3f352a}
+  .scr-pix .amt{text-align:center;padding:14px;font-size:28px;font-weight:900;color:#221d17}
+  .scr-pix .amt small{font-size:13px;color:#d7b675;display:block;font-weight:600}
+  .scr-pix .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#eae9e6;margin:8px 0}
+  .scr-pix .keys span{background:#f8f7f6;padding:13px;text-align:center;font-weight:700;font-size:15px}
+  .scr-pix .send{margin:6px 14px;background:#9f731a;color:#fff;border-radius:12px;padding:12px;text-align:center;font-weight:800;font-size:12px}
+
+  /* avaliações */
+  .rate-wrap{display:flex;gap:18px;align-items:center;padding:16px 2px;border-top:1px solid #eee;margin-top:12px}
+  .rate-big{text-align:center}
+  .rate-big .n{font-size:42px;font-weight:800;line-height:1}
+  .rate-big .s{color:#fbbc04;font-size:13px;letter-spacing:1px}
+  .rate-big .c{font-size:11px;color:#5f6368;margin-top:3px}
+  .rate-bars{flex:1}
+  .rb{display:flex;align-items:center;gap:7px;margin:2px 0}
+  .rb span{font-size:10px;color:#5f6368;width:8px}
+  .rb .t{flex:1;height:7px;background:#eee;border-radius:5px;overflow:hidden}
+  .rb .t i{display:block;height:100%;background:var(--st);border-radius:5px}
+
+  .rev{padding:13px 0;border-bottom:1px solid #f4f3f1}
+  .rev .rh{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .rev .av{width:32px;height:32px;border-radius:50%;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .rev .nm{font-size:12.5px;font-weight:700}
+  .rev .meta{font-size:10.5px;color:#5f6368}
+  .rev .rs{color:#fbbc04;font-size:11px;margin-left:auto}
+  .rev p{font-size:12.5px;color:#3c4043;line-height:1.5}
+  .rev .help{font-size:10.5px;color:#5f6368;margin-top:6px}
+
+  .about-h{font-size:15px;font-weight:700;margin:18px 2px 6px}
+  .about{font-size:13px;color:#3c4043;line-height:1.6}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .chip2{font-size:11px;color:#5f6368;background:#f4f3f1;padding:6px 11px;border-radius:100px}
+
+  /* barra fixa instalar */
+  .ibar{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-top:1px solid #eee;padding:11px 16px calc(11px + env(safe-area-inset-bottom))}
+  .ibar-in{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:13px}
+  .ibar .ic{width:40px;height:40px;border-radius:11px;background:#fff;border:1px solid #efede9;flex-shrink:0;padding:4px;display:flex;align-items:center;justify-content:center}
+  .ibar .ic img{width:100%;height:100%;object-fit:contain}
+  .ibar .nm b{font-size:13.5px;font-weight:700}.ibar .nm small{display:block;font-size:11px;color:#5f6368}
+  .ibar .btn{margin-left:auto;border:0;cursor:pointer;background:var(--st);color:#fff;font-family:inherit;font-weight:800;font-size:14.5px;padding:13px 22px;border-radius:9px;display:flex;align-items:center;gap:7px;animation:breathe 2.4s ease-in-out infinite}
+  .store-ios .ibar .btn{border-radius:100px}
+  .ibar .btn:active{transform:scale(.98)}
+</style>
+</head>
+<body class="store">
+
+  <!-- SELETOR DE PLATAFORMA -->
+  <div class="picker" id="picker">
+    <div class="pk-inner">
+      <div class="pk-ic"><img src="../images/supersim-logo.png" alt="SuperSim"></div>
+      <div class="pk-name">SuperSim: Empréstimo</div>
+      <div class="pk-meta"><span class="star">★</span> 4,8 <span class="dot"></span> 1 Mi+ instalações <span class="dot"></span> Finanças</div>
+      <div class="pk-desc">Acesse e <b>saque seu empréstimo de R$ 4.600,00</b> direto pelo app, com cartão virtual e Pix 24h.</div>
+      <div class="pk-label">Escolha sua loja</div>
+      <div class="pk-badges">
+        <div class="badge" onclick="choose('and')">
+          <span class="g"><svg width="26" height="28" viewBox="0 0 24 24"><path fill="#f9a806" d="M3.6 2.3 13 11.7 3.6 21.1c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1z"/><path fill="#c68f20" d="M3.6 2.3c.3-.2.7-.2 1.1.1l11.2 6.2-2.9 3z"/><path fill="#FFCE00" d="M16.9 8.6 20.4 10.6c.8.5.8 1.6 0 2.1l-3.5 2-3-3z"/><path fill="#FF3D00" d="M3.6 21.1 13 11.7l2.9 2.9-11.2 6.3c-.4.2-.8.3-1.1.1z"/></svg></span>
+          <span class="tx"><small>Disponível no</small><b>Google Play</b></span>
+          <span class="arr"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="badge" onclick="choose('ios')">
+          <span class="g"><svg width="24" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M16.36 12.78c.02 2.5 2.19 3.33 2.22 3.34-.02.06-.35 1.2-1.15 2.37-.69 1.02-1.41 2.03-2.55 2.05-1.11.02-1.47-.66-2.74-.66-1.27 0-1.67.64-2.72.68-1.09.04-1.93-1.1-2.63-2.11C5.18 18.07 4 14.2 5.5 11.6c.71-1.28 1.99-2.09 3.38-2.11 1.07-.02 2.08.72 2.74.72.65 0 1.88-.89 3.17-.76.54.02 2.06.22 3.03 1.65-.08.05-1.81 1.06-1.46 3.68M14.3 7.7c.58-.7.97-1.68.86-2.66-.84.03-1.85.56-2.45 1.26-.54.62-1.01 1.62-.88 2.58.93.07 1.89-.48 2.47-1.18"/></svg></span>
+          <span class="tx"><small>Baixar na</small><b>App Store</b></span>
+          <span class="arr"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+      <div class="pk-sec"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2"/></svg> Compra única via Pix · ambiente 100% seguro</div>
+    </div>
+  </div>
+
+  <!-- BARRA DA LOJA -->
+  <div class="st-bar">
+    <span class="back"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="m15 6-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="sb and-only"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m21 21-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Google Play</div>
+    <span class="ios-only ios-title">App Store</span>
+    <span class="ios-only ios-act">Cancelar</span>
+  </div>
+
+  <div class="shell">
+    <!-- CABEÇALHO DO APP -->
+    <div class="app-head">
+      <div class="app-ic"><img src="../images/supersim-logo.png" alt="SuperSim"></div>
+      <div>
+        <div class="app-name">SuperSim: Empréstimo</div>
+        <div class="app-dev">SuperSim S.A. <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="m8 12 3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="app-tags">Finanças · Contém compras no app</div>
+      </div>
+    </div>
+
+    <!-- MÉTRICAS -->
+    <div class="metrics">
+      <div class="metric"><b class="st-star">4,8 <svg width="12" height="12" viewBox="0 0 24 24" fill="#202124"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 7L12 17.8 5.7 21l1.5-7L2 9.3l7-.8z"/></svg></b><small>12 mil avaliações</small></div>
+      <div class="metric"><b>1 Mi+</b><small>Downloads</small></div>
+      <div class="metric"><b><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#5f6368" stroke-width="1.8"/><path d="M9 7h6" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round"/></svg></b><small>14 MB</small></div>
+      <div class="metric"><b>L</b><small>Livre</small></div>
+    </div>
+
+    <!-- INSTALAR -->
+    <div class="install-row">
+      <button class="btn-get" onclick="redirect('up9')"><span id="getLabel">Instalar · R$ 11,99</span></button>
+      <div class="get-sub">Compra única · pagamento via Pix · acesso imediato</div>
+    </div>
+
+    <!-- PRINTS -->
+    <div class="shots-h" style="display:flex;align-items:center;justify-content:space-between">Imagens <span style="font-size:11px;font-weight:600;color:#5f6368;display:flex;align-items:center;gap:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m15 6-6 6 6 6M9 6l-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>arraste<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6M15 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg></span></div>
+    <div class="shots">
+      <div class="phone"><img class="shot-img" src="images/screen-home.jpg" alt="Tela inicial do app SuperSim" loading="lazy"></div>
+      <div class="phone"><img class="shot-img" src="images/screen-card.jpg" alt="Cartão virtual SuperSim" loading="lazy"></div>
+      <div class="phone"><img class="shot-img" src="images/screen-pix.jpg" alt="Área Pix do app SuperSim" loading="lazy"></div>
+      <div class="phone"><img class="shot-img" src="images/screen-emprestimo.jpg" alt="Acompanhamento do empréstimo" loading="lazy"></div>
+    </div>
+
+    <!-- AVALIAÇÕES -->
+    <div class="rate-wrap">
+      <div class="rate-big"><div class="n">4,8</div><div class="s">★★★★★</div><div class="c">12.418</div></div>
+      <div class="rate-bars">
+        <div class="rb"><span>5</span><div class="t"><i style="width:88%"></i></div></div>
+        <div class="rb"><span>4</span><div class="t"><i style="width:9%"></i></div></div>
+        <div class="rb"><span>3</span><div class="t"><i style="width:2%"></i></div></div>
+        <div class="rb"><span>2</span><div class="t"><i style="width:1%"></i></div></div>
+        <div class="rb"><span>1</span><div class="t"><i style="width:1%"></i></div></div>
+      </div>
+    </div>
+
+    <div class="rev">
+      <div class="rh"><span class="av" style="background:#9f731a">JM</span><div><div class="nm">Joana Martins</div><div class="meta">há 2 dias</div></div><span class="rs">★★★★★</span></div>
+      <p>Instalei, ativei e o dinheiro caiu na hora. Dá pra sacar e acompanhar tudo pelo cartão virtual. Recomendo demais!</p>
+      <div class="help">238 pessoas acharam útil</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="av" style="background:#8a6417">RT</span><div><div class="nm">Ricardo Teixeira</div><div class="meta">há 5 dias</div></div><span class="rs">★★★★★</span></div>
+      <p>App leve e simples. O cartão virtual funcionou de primeira e o suporte respondeu rápido. Top!</p>
+      <div class="help">176 pessoas acharam útil</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="av" style="background:#ca8a04">LF</span><div><div class="nm">Letícia Freitas</div><div class="meta">há 1 semana</div></div><span class="rs">★★★★★</span></div>
+      <p>Consegui meu empréstimo e ainda uso a conta pra Pix e pagar boleto. Virou meu app principal.</p>
+      <div class="help">142 pessoas acharam útil</div>
+    </div>
+
+    <div class="about-h">Sobre o app</div>
+    <div class="about">Com o SuperSim você acessa, acompanha e <b>saca seu empréstimo</b> direto pelo cartão virtual. Conta digital com Pix 24h, pagamento de boletos, cartão virtual e acompanhamento das parcelas em tempo real — tudo na palma da mão.</div>
+    <div class="chips"><span class="chip2">Finanças</span><span class="chip2">Pix 24h</span><span class="chip2">Cartão virtual</span><span class="chip2">Empréstimo</span></div>
+
+    <footer style="text-align:center;padding:22px 16px 0;color:#5f6368;font-size:11px;line-height:1.7">© <span id="currentYear"></span> SuperSim S.A. · CNPJ nº 33.030.944/0001-60<small style="display:block;margin-top:5px;color:#a4a19c">Avenida Presidente Wilson, 9 — São Vicente/SP</small></footer>
+  </div>
+
+  <!-- BARRA FIXA INSTALAR -->
+  <div class="ibar"><div class="ibar-in"><div class="ic"><img src="../images/supersim-logo.png" alt="SuperSim"></div><div class="nm"><b>SuperSim: Empréstimo</b><small>Acesse e saque seu crédito</small></div>
+    <button class="btn" onclick="handleCTA()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="ibarLabel">Instalar</span></button></div></div>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+  function choose(p){
+    document.body.classList.add(p==='ios'?'store-ios':'store-play');
+    document.getElementById('getLabel').textContent = (p==='ios'?'Obter':'Instalar') + ' · R$ 11,99';
+    document.getElementById('ibarLabel').textContent = (p==='ios'?'Obter':'Instalar');
+    var pk=document.getElementById('picker'); pk.style.opacity='0'; pk.style.transition='.25s';
+    setTimeout(function(){ pk.classList.add('hidden'); window.scrollTo(0,0); },250);
+  }
+  /* arrastar o carrossel de imagens (mouse no desktop + toque no celular) */
+  (function(){
+    var sc=document.querySelector('.shots'); if(!sc) return;
+    var down=false,sx=0,sl=0;
+    sc.style.cursor='grab';
+    sc.addEventListener('pointerdown',function(e){down=true;sx=e.clientX;sl=sc.scrollLeft;sc.style.cursor='grabbing';try{sc.setPointerCapture(e.pointerId);}catch(_){}});
+    sc.addEventListener('pointermove',function(e){if(!down)return;sc.scrollLeft=sl-(e.clientX-sx);});
+    function up(){down=false;sc.style.cursor='grab';}
+    sc.addEventListener('pointerup',up); sc.addEventListener('pointercancel',up); window.addEventListener('pointerup',up);
+    sc.addEventListener('dragstart',function(e){e.preventDefault();});
+  })();
+</script>
+
+<script src="js/mCBBvgs4TtgU.js"></script>
+<script src="../js/upsells-shared.js"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){initUpsell(9);});</script>
+<script src="../js/back-redirect.js?v=3"></script>
+<script>
+  function handleCTA() {
+    if (typeof window.openPixModal === 'function') {
+      window.openPixModal(2000, 'Taxa de Liberação', '../up10/index.html');
+    } else {
+      window.location.href = "../up10/index.html";
+    }
+  }
+</script>
+  <script src="../js/pix-modal.js"></script>
+</body></html>
