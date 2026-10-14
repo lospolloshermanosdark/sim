@@ -865,7 +865,7 @@ async function openPixModal(
  * Consulta:
  *
  * GET
- * https://electroern.lat/api/payments/:id/status
+ * https://https://supersimcredito.vercel.app/api/payments/:id/status
  *
  * Retorno:
  *
