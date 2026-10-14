@@ -122,7 +122,7 @@ const PIX_MODAL_HTML = `
 ========================================================= */
 
 const BLACKCAT_SERVER =
-  'https://electroern.lat/api';
+  '/api';
 
 const BLACKCAT_CREATE_URL =
   `${BLACKCAT_SERVER}/payments`;
